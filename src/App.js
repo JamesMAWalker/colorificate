@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Palette from './components/palette.component';
+import Palette from './components/palette/palette.component';
 
 import seedColors from './data/seedColors';
 
 function App() {
   return (
-    <div className='Palette'>
+    <div >
       {/* Navbar */}
-      <div className='Palette-colors'>{/* Many colors */}</div>
+      <Palette colors={seedColors[6].colors} className='Palette-colors'/>
       {/* Footer */}
     </div>
   );

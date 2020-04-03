@@ -1,0 +1,51 @@
+.Color-box {
+  position: relative;
+  width: 20%;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-flow: column;
+
+  &:hover .copy-btn {
+    opacity: 1;
+    transition: all .2s;
+  }
+}
+
+.copy-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: rgba(41, 41, 41, 0.308);
+  padding: .5rem 2rem;
+  color: white;
+  opacity: 0;
+}
+
+.color-content {
+  width: 100%;
+  align-self: center;
+  justify-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+
+  & span {
+    margin: 5px;
+  }
+}
+
+.more-colors {
+  background: rgba(41, 41, 41, 0.308);
+  padding: 1rem 2rem;
+  
+  &:hover {
+    background: rgba(190, 190, 190, 0.308);
+    transition: all .5s;
+  }
+}
