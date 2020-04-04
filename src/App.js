@@ -11,9 +11,9 @@ function App() {
   
 
   return (
-    <div >
+    <div > 
       {/* Navbar */}
-      <Palette colors={seedColors[2].colors} className='Palette-colors'/>
+      <Palette palette={genPal(seedColors[2])} className='Palette-colors'/>
       {/* Footer */}
     </div>
   );

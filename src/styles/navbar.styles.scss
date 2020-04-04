@@ -1,0 +1,63 @@
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  padding: 2rem 4rem;
+  border-right: 1px solid rgb(28, 161, 223);
+
+  &-text {
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    background-image: linear-gradient(
+      to right,
+      rgb(240, 23, 204), 
+      rgb(28, 161, 223));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+
+// RC Slider Styles //
+
+.Slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+.Slider {
+  width: 15vw;
+  margin: 10px 20px;
+  display: inline-block;
+
+  &-level {
+    font-size: 1.2rem;
+    color: grey;
+  }
+}
+
+.rc-slider-track {
+  background-color: transparent;
+}
+
+.rc-slider-handle {
+  
+  &,
+  &:active, 
+  &:focus, 
+  &:hover {
+    background-color: rgb(5, 85, 146);
+    outline: none;
+    border: 2px;
+  }
+}
+
+.rc-slider-rail {
+  background-image: linear-gradient(to right, rgb(182, 182, 182) 40%, black);
+}
