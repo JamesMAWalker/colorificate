@@ -22,6 +22,9 @@
   }
 }
 
+
+// Material UI Styles
+
 .Select-container {
   margin: 1rem 2rem;
 }
@@ -31,7 +34,16 @@
   color: rgb(110, 110, 110);
 }
 
+#format-msg {
+  font-size: 1.25rem;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
 
+.MuiSnackbarContent-root {
+  min-width: unset !important;
+}
 
 
 // RC Slider Styles //
