@@ -4,11 +4,16 @@ import Palette from './components/palette/palette.component';
 
 import seedColors from './data/seedColors';
 
+import genPal from './utils/color.utils';
+
 function App() {
+  console.log(genPal(seedColors[2]));
+  
+
   return (
     <div >
       {/* Navbar */}
-      <Palette colors={seedColors[6].colors} className='Palette-colors'/>
+      <Palette colors={seedColors[2].colors} className='Palette-colors'/>
       {/* Footer */}
     </div>
   );

@@ -10,7 +10,7 @@ class Palette extends Component {
     const { colors } = this.props;
 
     const colorBoxes = colors.map(c => (
-      <ColorBox bgco={c.color} name={c.name} />
+      <ColorBox bgco={c.color} name={c.name} key={c.name}/>
     ))
     
     return (
