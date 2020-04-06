@@ -23,6 +23,31 @@
       margin: .5rem;
     }
   }
+
+  &-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    
+    &__title {
+      font-size: 3rem;
+    }
+    
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow: column;
+      
+      & > * {
+        text-decoration: none;
+        color: inherit;
+        font-size: 2rem;
+      }
+    }
+  }
 }
+
 
 

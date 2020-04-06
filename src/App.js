@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import Palette from './components/palette/palette.component';
+import PaletteList from './components/palette/palette-list.component';
 
 import seedColors from './data/seedColors';
 
 import genPal from './utils/color.utils';
 
-function App() {
-  console.log(genPal(seedColors[1]));
-  
+class App extends Component {
 
-  return (
-    <div > 
-      {/* Navbar */}
-      <Palette palette={genPal(seedColors[1])} className='Palette-colors'/>
-      {/* Footer */}
-    </div>
-  );
+  findPal = id => {
+    return seedColors.find(palette => palette.id === id);
+  }
+
+ render () {
+   return (
+     <div>
+       <Switch>
+         <Route
+           exact
+           path='/'
+           render={() => <PaletteList palettes={seedColors} />}
+         />
+         <Route
+           exact
+           path='/palette/:id'
+           render={(rp) => <Palette palette={genPal(this.findPal(rp.match.params.id))} /> }
+         />
+       </Switch>
+     </div>
+   );
+ }
 }
 
 export default App;

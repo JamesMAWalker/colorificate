@@ -21,6 +21,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  &:hover {
+    background-color: rgba(253, 0, 232, 0.05);
+    transition: all .2s;
+  }
 }
 
 

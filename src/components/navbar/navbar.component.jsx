@@ -40,9 +40,9 @@ class NavBar extends Component {
     return (
       <header className='Navbar'>
         <div className='logo'>
-          <a className='logo-text' href='#'>
+          <Link className='logo-text' to='/'>
             colorificate
-          </a>
+          </Link>
         </div>
         <div className='Slider-container'>
           <div className='Slider-level'>level&nbsp; // &nbsp;{level}</div>
