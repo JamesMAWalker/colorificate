@@ -32,7 +32,9 @@ class ColorBox extends Component {
             style={{ backgroundColor: bgco }}
           />
           <div className={`copy-message ${isCopied}`}>
-            <h1>{bgco} <br/> COPIED!</h1>
+            <h1>
+              COPIED <br /> {bgco}
+            </h1>
             <p></p>
           </div>
           <button className='copy-btn'>COPY</button>

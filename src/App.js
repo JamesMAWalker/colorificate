@@ -7,13 +7,13 @@ import seedColors from './data/seedColors';
 import genPal from './utils/color.utils';
 
 function App() {
-  console.log(genPal(seedColors[2]));
+  console.log(genPal(seedColors[1]));
   
 
   return (
     <div > 
       {/* Navbar */}
-      <Palette palette={genPal(seedColors[2])} className='Palette-colors'/>
+      <Palette palette={genPal(seedColors[1])} className='Palette-colors'/>
       {/* Footer */}
     </div>
   );
