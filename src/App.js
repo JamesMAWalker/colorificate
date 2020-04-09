@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Palette from './components/palette/palette.component';
 import PaletteList from './components/palette/palette-list.component';
+import SingleColorPalette from './components/palette/single-color-palette.component';
 
 import seedColors from './data/seedColors';
 
@@ -26,7 +27,19 @@ class App extends Component {
          <Route
            exact
            path='/palette/:id'
-           render={(rp) => <Palette palette={genPal(this.findPal(rp.match.params.id))} /> }
+           render={(rp) => (
+             <Palette palette={genPal(this.findPal(rp.match.params.id))} />
+           )}
+         />
+         <Route
+           exact
+           path='/palette/:palID/:clrID'
+           render={(rp) => (
+             <SingleColorPalette 
+              clrID={rp.match.params.clrID} 
+              palette={genPal(this.findPal(rp.match.params.palID))} 
+             />
+           )}
          />
        </Switch>
      </div>

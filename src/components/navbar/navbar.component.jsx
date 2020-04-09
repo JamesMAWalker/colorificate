@@ -34,7 +34,7 @@ class NavBar extends Component {
   }
 
   render() {
-    const { level, changeLvl } = this.props;
+    const { level, changeLvl, showSlider } = this.props;
     const { format, open } = this.state;
 
     return (
@@ -44,18 +44,20 @@ class NavBar extends Component {
             colorificate
           </Link>
         </div>
-        <div className='Slider-container'>
-          <div className='Slider-level'>level&nbsp; // &nbsp;{level}</div>
-          <div className='Slider'>
-            <Slider
-              defaultValue={level}
-              min={100}
-              max={900}
-              step={100}
-              onAfterChange={changeLvl}
-            />
+        {showSlider && (
+          <div className='Slider-container'>
+            <div className='Slider-level'>level&nbsp; // &nbsp;{level}</div>
+            <div className='Slider'>
+              <Slider
+                defaultValue={level}
+                min={100}
+                max={900}
+                step={100}
+                onAfterChange={changeLvl}
+              />
+            </div>
           </div>
-        </div>
+        )}
         <div className='Select-container'>
           <Select value={format} onChange={this.handleSelect}>
             <MenuItem className='value-name' value='hex'>
@@ -73,17 +75,26 @@ class NavBar extends Component {
             </MenuItem>
           </Select>
         </div>
-        <Snackbar 
-          anchorOrigin={{ vertical: "bottom", horizontal: "left" }} 
+        <Snackbar
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
           open={open}
           autoHideDuration={2000}
-          message={<span id="format-msg">Format changed to // {format.toUpperCase()}</span>}
-          ContentProps={{ "aria-describedby": "format-msg" }}
+          message={
+            <span id='format-msg'>
+              Format changed to // {format.toUpperCase()}
+            </span>
+          }
+          ContentProps={{ 'aria-describedby': 'format-msg' }}
           onClose={this.closeSnack}
           action={[
-            <IconButton onClick={this.closeSnack} color="inherit" key="close" aria-label="close">
-              <CloseIcon/>
-            </IconButton>
+            <IconButton
+              onClick={this.closeSnack}
+              color='inherit'
+              key='close'
+              aria-label='close'
+            >
+              <CloseIcon />
+            </IconButton>,
           ]}
         />
       </header>

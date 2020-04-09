@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import ColorBox from './color-box.component';
 import NavBar from '../navbar/navbar.component';
+import PaletteFooter from './palette-footer.component';
 
 import '../../styles/palette.styles.scss';
 
@@ -18,19 +19,23 @@ class Palette extends Component {
   }
 
   changeFormat = (val) => {
-    this.setState({ format: val})
+    this.setState({ format: val })
   }
   
   
   render() {
-    const { colors, palName, emoji } = this.props.palette;
+    const { colors, palName, emoji, id } = this.props.palette;
     const { level, format } = this.state;
-
-    console.log(this.props.palette);
     
-
     const colorBoxes = colors[level].map(c => (
-      <ColorBox bgco={c[format]} name={c.name} key={c.id}/>
+      <ColorBox 
+        bgco={c[format]} 
+        name={c.name} 
+        palID={id} 
+        key={c.id} 
+        clrID={c.id}
+        showLink
+      />
     ))
     
     return (
@@ -39,12 +44,13 @@ class Palette extends Component {
           level={level} 
           changeLvl={this.changeLvl} 
           handleChange={this.changeFormat}
+          showSlider
         />  
         <div className='Palette__colors'>{colorBoxes}</div>
-        <footer className="Palette-footer">
-          {palName}&nbsp;
-          <span className="emoji">{emoji}</span>
-        </footer>
+        <PaletteFooter
+          emoji={emoji}
+          palName={palName}
+        />
       </div>
     );
   }
