@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
+import chroma from 'chroma-js';
 
 import '../../styles/color-box.styles.scss';
 
@@ -22,7 +23,9 @@ class ColorBox extends Component {
 
   render() {
     const { bgco, name, palID, clrID, showLink } = this.props;
-
+    const isDarkClr = chroma(bgco).luminance() <= .2;
+    const isLightClr = chroma(bgco).luminance() >= .5;
+    
     let isCopied = this.state.copied === true ? 'show' : '';
 
     return (
@@ -32,14 +35,15 @@ class ColorBox extends Component {
             className={`copy-overlay ${isCopied}`}
             style={{ backgroundColor: bgco }}
           />
-          <div className={`copy-message ${isCopied}`}>
+          <div
+            className={`copy-message ${isCopied} ${isLightClr && 'dark-text'}`}
+          >
             <h1>
               COPIED <br /> {bgco}
             </h1>
-            <p></p>
           </div>
           <button className='copy-btn'>COPY</button>
-          <div className='color-content'>
+          <div className={`color-content ${isDarkClr && 'light-text'}`}>
             <span>{name}</span>
             {showLink && (
               <Link

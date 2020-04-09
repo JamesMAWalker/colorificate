@@ -58,6 +58,10 @@
   align-items: center;
   text-transform: uppercase;
   font-size: 1.2rem;
+  
+  &.light-text {
+    color: rgb(223, 222, 222);
+  }
 
   & span {
     margin: 5px;
@@ -69,7 +73,7 @@
   padding: 1rem 2rem;
   cursor: pointer;
   text-decoration: none;
-  color: white;
+  color: inherit;
 
   &:hover {
     background: rgba(190, 190, 190, 0.308);
@@ -110,6 +114,10 @@
   opacity: 0; 
   color: white;
   transition: all .5s ease-in-out .2s;
+
+  &.dark-text {
+    color: rgb(128, 128, 128);
+  }
   
   & h1 {
     width: 100vw;

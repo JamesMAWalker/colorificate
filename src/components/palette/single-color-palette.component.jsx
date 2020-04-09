@@ -29,8 +29,6 @@ class SingleColorPalette extends Component {
       shades = shades.concat(allClrs[key].filter((c) => c.id === focusClr));
     }
 
-    console.log(shades);
-
     return shades.slice(1);
   };
 
