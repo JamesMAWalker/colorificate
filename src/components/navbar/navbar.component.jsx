@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
 
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -9,7 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slider from 'rc-slider';
 
 import 'rc-slider/assets/index.css';  
-import '../../styles/navbar.styles.scss';
+import styles from '../../styles/navBar.styles';
 
 class NavBar extends Component {
   constructor(props) {
@@ -34,20 +35,20 @@ class NavBar extends Component {
   }
 
   render() {
-    const { level, changeLvl, showSlider } = this.props;
+    const { level, changeLvl, showSlider, classes } = this.props;
     const { format, open } = this.state;
 
     return (
-      <header className='Navbar'>
-        <div className='logo'>
-          <Link className='logo-text' to='/'>
+      <header className={classes.NavBar}>
+        <div className={classes.logo}>
+          <Link className={classes.logoText} to='/'>
             colorificate
           </Link>
         </div>
         {showSlider && (
-          <div className='Slider-container'>
-            <div className='Slider-level'>level&nbsp; // &nbsp;{level}</div>
-            <div className='Slider'>
+          <div className={classes.sliderContainer}>
+            <div className={classes.sliderLevel}>level&nbsp; // &nbsp;{level}</div>
+            <div className={classes.slider}>
               <Slider
                 defaultValue={level}
                 min={100}
@@ -58,18 +59,18 @@ class NavBar extends Component {
             </div>
           </div>
         )}
-        <div className='Select-container'>
+        <div className={classes.SelectContainer}>
           <Select value={format} onChange={this.handleSelect}>
-            <MenuItem className='value-name' value='hex'>
-              <span className='value-ex'>HEX&nbsp;-&nbsp;#ffffff</span>
+            <MenuItem value='hex'>
+              <span className={classes.valueEx}>HEX&nbsp;-&nbsp;#ffffff</span>
             </MenuItem>
-            <MenuItem className='value-name' value='rgb'>
-              <span className='value-ex'>
+            <MenuItem value='rgb'>
+              <span className={classes.valueEx}>
                 RGB&nbsp;-&nbsp;rgb(255, 255, 255)
               </span>
             </MenuItem>
-            <MenuItem className='value-name' value='rgba'>
-              <span className='value-ex'>
+            <MenuItem value='rgba'>
+              <span className={classes.valueEx}>
                 RGBA&nbsp;-&nbsp;rgba(255, 255, 255, 1.0)
               </span>
             </MenuItem>
@@ -80,7 +81,7 @@ class NavBar extends Component {
           open={open}
           autoHideDuration={2000}
           message={
-            <span id='format-msg'>
+            <span className={classes.formatMsg}>
               Format changed to // {format.toUpperCase()}
             </span>
           }
@@ -102,4 +103,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withStyles(styles)(NavBar);

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
-import chroma from 'chroma-js';
+import { withStyles } from '@material-ui/styles';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import '../../styles/color-box.styles.scss';
+import styles from '../../styles/colorBox.styles';
+
 
 class ColorBox extends Component {
   constructor(props) {
@@ -21,33 +22,31 @@ class ColorBox extends Component {
   }
   
 
-  render() {
-    const { bgco, name, palID, clrID, showLink } = this.props;
-    const isDarkClr = chroma(bgco).luminance() <= .2;
-    const isLightClr = chroma(bgco).luminance() >= .5;
+  render() { 
+    const { bgco, name, palID, clrID, showingFullPalette, classes } = this.props;
     
-    let isCopied = this.state.copied === true ? 'show' : '';
-
+    
+    let isCopied = this.state.copied;
     return (
       <CopyToClipboard text={bgco} onCopy={this.changeCopyState}>
-        <div className='Color-box' style={{ backgroundColor: bgco }}>
+        <div className={classes.colorBox}>
           <div
-            className={`copy-overlay ${isCopied}`}
+            className={`${classes.copyOverlay} ${isCopied && classes.showOverlay}`}
             style={{ backgroundColor: bgco }}
           />
           <div
-            className={`copy-message ${isCopied} ${isLightClr && 'dark-text'}`}
+            className={`${classes.copyMessage} ${isCopied && classes.showMessage} ${classes.copyText}`}
           >
             <h1>
               COPIED <br /> {bgco}
             </h1>
           </div>
-          <button className='copy-btn'>COPY</button>
-          <div className={`color-content ${isDarkClr && 'light-text'}`}>
+          <button className={`${classes.boxButton}`}>COPY</button>
+          <div className={`${classes.colorContent} ${classes.colorBoxContent}`}>
             <span>{name}</span>
-            {showLink && (
+            {showingFullPalette && (
               <Link
-                className='more-colors'
+                className={classes.moreColors}
                 to={`/palette/${palID}/${clrID}`}
                 onClick={(e) => e.stopPropagation()}
               >
@@ -61,4 +60,4 @@ class ColorBox extends Component {
   }
 }
 
-export default ColorBox;
+export default withStyles(styles)(ColorBox);

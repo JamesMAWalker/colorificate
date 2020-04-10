@@ -3,34 +3,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 
 import MiniPalette from './mini-palette.component';
-
-const styles = {
-  root: {
-    backgroundColor: 'greenyellow',
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  ctnr: {
-    width: '55%',
-    height: '100%',
-    alignSelf: 'center',
-  },
-  nav: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    color: 'white',
-    fontSize: '2rem',
-  },
-  pals: {
-    boxSizing: 'border-box',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 30%)',
-    gap: '5%',
-  }
-}
-
+import styles from '../../styles/paletteList.styles';
 
 class PaletteList extends Component {
   
