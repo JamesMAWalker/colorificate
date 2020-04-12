@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Palette from './components/palette/palette.component';
 import PaletteList from './components/palette/palette-list.component';
 import SingleColorPalette from './components/palette/single-color-palette.component';
+import PaletteForm from './components/custom-palette/palette-form.component';
 
 import seedColors from './data/seedColors';
 
@@ -18,31 +19,36 @@ class App extends Component {
  render () {
    return (
      <div>
-       <Switch>
-         <Route
-           exact
-           path='/'
-           render={(rp) => <PaletteList {...rp} palettes={seedColors} />}
+      <Switch>
+        <Route 
+          exact
+          path='/palette/new' 
+          render={(rp) => <PaletteForm {...rp}/>}
+        />
+        <Route
+          exact
+          path='/'
+          render={(rp) => <PaletteList {...rp} palettes={seedColors} />}
+        />
+        <Route
+          exact
+          path='/palette/:id'
+          render={(rp) => (
+            <Palette palette={genPal(this.findPal(rp.match.params.id))} />
+          )}
          />
-         <Route
-           exact
-           path='/palette/:id'
-           render={(rp) => (
-             <Palette palette={genPal(this.findPal(rp.match.params.id))} />
-           )}
-         />
-         <Route
+        <Route
            exact
            path='/palette/:palID/:clrID'
            render={(rp) => (
-             <SingleColorPalette 
+            <SingleColorPalette 
               clrID={rp.match.params.clrID} 
               palette={genPal(this.findPal(rp.match.params.palID))} 
-             />
+            />
            )}
          />
-       </Switch>
-     </div>
+      </Switch>
+    </div>
    );
  }
 }
