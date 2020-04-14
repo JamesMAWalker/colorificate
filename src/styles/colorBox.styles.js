@@ -51,7 +51,7 @@ export default {
   },
   colorBoxContent: {
     color: (props) =>
-      chroma(props.bgco).luminance() >= 0.5 ? 'rgba(0, 0, 0, 0.7)' : 'white',
+      chroma(props.bgco).luminance() >= 0.5 ? 'rgba(0, 0, 0, 0.5)' : 'white',
   },
   copyMessage: {
     position: 'fixed',

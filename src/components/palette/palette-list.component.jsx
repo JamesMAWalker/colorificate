@@ -25,7 +25,7 @@ class PaletteList extends Component {
         <div className={ctnr}>
           <div className={nav}>
             <h1>COLORIFICATE</h1>
-            <Link>Create A Palette</Link>
+            <Link to='/palette/new' >Create A Palette</Link>
           </div>
           <div className={pals}>{listOfPalettes}</div>
         </div>

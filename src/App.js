@@ -12,23 +12,46 @@ import genPal from './utils/color.utils';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      palettes: seedColors
+    }
+  }
+  
+
   findPal = id => {
-    return seedColors.find(palette => palette.id === id);
+    return this.state.palettes.find(palette => palette.id === id);
+  }
+
+  savePalette = (newPal) => {
+    console.log(newPal);
+    
+    this.setState(st => ({
+      palettes: [...st.palettes, newPal]
+    }));
   }
 
  render () {
+   const { palettes } = this.state;
+
    return (
      <div>
       <Switch>
         <Route 
           exact
           path='/palette/new' 
-          render={(rp) => <PaletteForm {...rp}/>}
+          render={(rp) => <PaletteForm 
+            savePalette={this.savePalette} 
+            {...rp}
+            palettes={this.state.palettes}
+          />}
         />
         <Route
           exact
           path='/'
-          render={(rp) => <PaletteList {...rp} palettes={seedColors} />}
+          render={(rp) => <PaletteList {...rp} palettes={palettes} />}
         />
         <Route
           exact
