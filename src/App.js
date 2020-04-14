@@ -46,6 +46,7 @@ class App extends Component {
             savePalette={this.savePalette} 
             {...rp}
             palettes={this.state.palettes}
+            colorLimit={20}
           />}
         />
         <Route
