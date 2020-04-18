@@ -1,9 +1,46 @@
 import React, { Component } from 'react';
 
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 import { ChromePicker } from 'react-color';
+
+const drawerWidth = 400;
+
+const styles = {
+  ColorPicker: {
+    width: '85%',
+    display: 'flex',
+    flexFlow: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  pickerTool: {
+    width: '100% !important',
+    paddingTop: '1rem',
+  },
+  addColorForm: {
+    display: 'flex',
+    flexFlow: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  colorNameInput: {
+    width: '100%',
+    marginTop: '2rem',
+
+    '& *': {
+      fontSize: '1.65rem',
+    },
+  },
+  addClrBtn: {
+    marginTop: '2rem',
+    width: '100%',
+    fontSize: '2rem',
+  },
+};
 
 class ColorPicker extends Component {
   constructor(props) {
@@ -49,14 +86,17 @@ class ColorPicker extends Component {
   };
 
   render() {
-    const { paletteIsFull } = this.props;
+    const { paletteIsFull, classes } = this.props;
     const { crrClr, newColorName } = this.state;
     return (
-      <div className='Color-picker'>
-        <ChromePicker color={crrClr} onChangeComplete={this.updateCrrClr} />
-        <ValidatorForm instantValidate={true} onSubmit={this.handleSubmit}>
+      <div className={classes.ColorPicker}>
+        <ChromePicker className={classes.pickerTool} color={crrClr} onChangeComplete={this.updateCrrClr} />
+        <ValidatorForm className={classes.addColorForm} instantValidate={true} onSubmit={this.handleSubmit}>
           <TextValidator
             name='newColorName'
+            placeholder='name your color!'
+            className={classes.colorNameInput}
+            variant='filled'
             value={newColorName}
             onChange={this.handleChange}
             validators={['required', 'isColorNameUnique', 'isColorUnique']}
@@ -67,6 +107,7 @@ class ColorPicker extends Component {
             ]}
           />
           <Button
+            className={classes.addClrBtn}
             variant='contained'
             color='primary'
             style={{
@@ -83,4 +124,4 @@ class ColorPicker extends Component {
   }
 }
 
-export default ColorPicker;
+export default withStyles(styles)(ColorPicker);

@@ -15,39 +15,21 @@ import ColorPicker from './color-picker.component';
 import PaletteFormNav from './palette-form-nav.component';
 import DraggableList from '../custom-palette/color-list-draggable.component';
 
-const drawerWidth = 350;
+const drawerWidth = 400;
 
 const styles = theme => ({
   root: {
-    display: "flex"
-  },
-  appBar: {
-      transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20
-  },
-  hide: {
-    display: "none"
+    display: "flex",
+    marginTop: '64px',
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    display: 'flex',
+    alignItems: 'center',
   },
   drawerHeader: {
     display: "flex",
@@ -73,6 +55,27 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  btns: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    margin: '2rem 0',
+    width: '100%',
+
+    '& button': {
+      fontSize: '1.5rem',
+    }
+  },
+  drawerContainer: {
+    display: 'flex',
+    flexFlow: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  drawerHeader: {
+
   }
 });
 
@@ -172,7 +175,6 @@ class PaletteForm extends Component {
         <div className={classes.root}>
           <PaletteFormNav
             open={open}
-            classes={classes}
             palettes={palettes}
             handleSubmit={this.handlePaletteSubmit}
             handleDrawerOpen={this.handleDrawerOpen}
@@ -192,31 +194,33 @@ class PaletteForm extends Component {
               </IconButton>
             </div>
             <Divider />
-            <Typography variant='h2' color='inherit'>
-              Create Your Palette
-            </Typography>
-            <div className=''>
-              <Button
-                onClick={this.clearClrs}
-                variant='contained'
-                color='secondary'
-              >
-                Clear Palette
-              </Button>
-              <Button
-                variant='contained'
-                color={paletteIsFull ? 'default' : 'primary'}
-                onClick={this.addRandClr}
-                disabled={paletteIsFull}
-              >
-                Random Color
-              </Button>
+            <div className={classes.drawerContainer}>
+              <Typography className={classes.drawerHeader} variant='h2' color='inherit'>
+                n e w c o l o r s
+              </Typography>
+              <div className={classes.btns}>
+                <Button
+                  onClick={this.clearClrs}
+                  variant='contained'
+                  color='secondary'
+                >
+                  Clear Palette
+                </Button>
+                <Button
+                  variant='contained'
+                  color={paletteIsFull ? 'default' : 'primary'}
+                  onClick={this.addRandClr}
+                  disabled={paletteIsFull}
+                >
+                  Random Color
+                </Button>
+              </div>
+              <ColorPicker
+                paletteIsFull={paletteIsFull}
+                addClr={this.addClr}
+                colors={colors}
+              />
             </div>
-            <ColorPicker
-              paletteIsFull={paletteIsFull}
-              addClr={this.addClr}
-              colors={colors}
-            />
           </Drawer>
           <main
             className={classNames(classes.content, {
