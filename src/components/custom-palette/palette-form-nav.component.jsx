@@ -51,6 +51,10 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
+
+    '& *': {
+      margin: '.5rem',
+    }
   }
 });
 
@@ -60,21 +64,18 @@ class PaletteFormNav extends Component {
 
     this.state = {
       newPaletteName: '',
+      formShowing: false,
       open: true,
     };
   }
 
-  // componentDidMount() {
-  //   ValidatorForm.addValidationRule('isPalNameUnique', (value) =>
-  //     this.props.palettes.every(
-  //       ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-  //     )
-  //   );
-  // }
-
-  // handleChange = (e) => {
-  //   this.setState({ [e.target.name]: e.target.value });
-  // };
+  toggleForm = () => {
+    console.log('clicked showForm');
+    
+    this.setState(st => ({
+      formShowing: !st.formShowing
+    }));
+  }
 
   render() {
     const {
@@ -84,10 +85,10 @@ class PaletteFormNav extends Component {
       palettes
     } = this.props;
 
-    const { newPaletteName } = this.state;
+    const { newPaletteName, formShowing } = this.state;
 
     return (
-      <div className={classes.root} >
+      <div className={classes.root}>
         <CssBaseline />
         <AppBar
           color='default'
@@ -105,39 +106,31 @@ class PaletteFormNav extends Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant='h6' color='inherit' noWrap>
-              create your palette
-            </Typography>
-            </Toolbar>
-            <div className={classes.navBtns}>
-              {/* <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
-                <TextValidator
-                  value={this.state.newPaletteName}
-                  label='Palette Name'
-                  name='newPaletteName'
-                  onChange={this.handleChange}
-                  validators={['required', 'isPalNameUnique']}
-                  errorMessages={[
-                    'Please enter a name!',
-                    'Name already in use!',
-                  ]}
-                />
-                <Button type='submit' variant='contained' color='primary'>
-                  SAVE PALETTE
-                </Button>
-                </ValidatorForm> */}
-                <PaletteSubmitDialog 
-                  newPaletteName={newPaletteName}
-                  handleSubmit={handleSubmit}
-                  palettes={palettes}
-                />
-                <Link to='/' style={{ textDecoration: 'none' }}>
-                  <Button variant='outlined' color='secondary'>
-                    BACK TO PALETTES
-                  </Button>
-                </Link>
-            </div>
+            <Typography variant='h6' color='inherit' noWrap>New Palette</Typography>
+          </Toolbar>
+          <div className={classes.navBtns}>
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={this.toggleForm}
+            >
+              SUBMIT NEW PALETTE
+            </Button>
+            <Link to='/' style={{ textDecoration: 'none' }}>
+              <Button variant='text' color='secondary'>
+                BACK TO PALETTES
+              </Button>
+            </Link>
+          </div>
         </AppBar>
+        {formShowing && (
+          <PaletteSubmitDialog
+            newPaletteName={newPaletteName}
+            handleSubmit={handleSubmit}
+            palettes={palettes}
+            toggleForm={this.toggleForm}
+          />
+        )}
       </div>
     );
   }
