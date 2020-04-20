@@ -129,6 +129,7 @@ class PaletteFormNav extends Component {
             handleSubmit={handleSubmit}
             palettes={palettes}
             toggleForm={this.toggleForm}
+            formShowing={formShowing}
           />
         )}
       </div>

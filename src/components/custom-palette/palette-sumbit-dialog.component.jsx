@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,8 +19,9 @@ class PaletteSubmitDialog extends Component {
     super(props);
 
     this.state = {
-      open: true,
+      stage: this.props.formShowing ? 'form' : '',
       newPaletteName: '',
+      currEmoji: '😃',
     };
   }
 
@@ -41,24 +45,71 @@ class PaletteSubmitDialog extends Component {
     this.props.toggleForm();
   };
 
+  nextDialog = () => {
+    this.setState({ stage: 'emoji' });
+  }
+
+  chooseEmoji = (emj) => {
+    this.setState({ currEmoji: emj.native });
+  }
+
+  handlePaletteSubmit = () => {
+    let newPalette = {
+      newPaletteName: this.state.newPaletteName,
+      emoji: this.state.currEmoji
+    }
+
+    this.props.handleSubmit(newPalette)
+  }
+
   render() {
-    const { handleSubmit } = this.props;
-    const { open, newPaletteName } = this.state;
+    const { handleSubmit, formShowing } = this.props;
+    const { newPaletteName, stage, currEmoji } = this.state;
 
     return (
+      <div className='Save-palette-dialogs'>
         <Dialog
-          open={open}
+          onClose={this.handleClose}
+          open={stage === 'emoji'}
+          className='emoji-dialog'
+        >
+          <DialogTitle id='form-dialog-title'>
+            Choose a Palette Emoji!
+          </DialogTitle>
+          <Picker
+            title={`Submit with "${currEmoji}"`}
+            onSelect={this.chooseEmoji}
+          />
+          <DialogActions>
+            <Button onClick={this.handleClose} color='primary'>
+              Cancel
+            </Button>
+            <Button
+              onClick={this.handlePaletteSubmit}
+              type='submit'
+              variant='contained'
+              color='primary'
+            >
+              SAVE PALETTE
+            </Button>
+          </DialogActions>
+        </Dialog>
+        <Dialog
+          open={stage === 'form'}
           onClose={this.handleClose}
           aria-labelledby='form-dialog-title'
         >
-          <DialogTitle id='form-dialog-title'>Submit Custom Palette</DialogTitle>
-          <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
+          <DialogTitle id='form-dialog-title'>
+            Submit Custom Palette
+          </DialogTitle>
+          <ValidatorForm onSubmit={this.nextDialog}>
             <DialogContent>
               <DialogContentText>
-                Enter a name for this new custom palette and then click sumbit to add it to the collection of existing palettes.
+                Enter a name for this new custom palette and then click sumbit
+                to add it to the collection of existing palettes.
               </DialogContentText>
               <TextValidator
-                value={this.state.newPaletteName}
+                value={newPaletteName}
                 label='Palette Name'
                 name='newPaletteName'
                 fullWidth
@@ -73,11 +124,12 @@ class PaletteSubmitDialog extends Component {
                 Cancel
               </Button>
               <Button type='submit' variant='contained' color='primary'>
-                SAVE PALETTE
+                NEXT
               </Button>
             </DialogActions>
           </ValidatorForm>
         </Dialog>
+      </div>
     );
   }
 }
