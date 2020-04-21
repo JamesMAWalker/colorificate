@@ -15,69 +15,7 @@ import ColorPicker from './color-picker.component';
 import PaletteFormNav from './palette-form-nav.component';
 import DraggableList from '../custom-palette/color-list-draggable.component';
 
-const drawerWidth = 400;
-
-const styles = theme => ({
-  root: {
-    display: "flex",
-    marginTop: '64px',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    display: 'flex',
-    alignItems: 'center',
-  },
-  drawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    // padding: "0 8px",
-    ...theme.mixins.toolbar,
-    justifyContent: "flex-end"
-  },
-  content: {
-    flexGrow: 1,
-    height: 'calc(100vh - 64px)',
-    padding: theme.spacing.unit * 3,
-    padding: 0,
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    marginLeft: -drawerWidth
-  },
-  contentShift: {
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    }),
-    marginLeft: 0
-  },
-  btns: {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    margin: '2rem 0',
-    width: '100%',
-
-    '& button': {
-      fontSize: '1.5rem',
-    }
-  },
-  drawerContainer: {
-    display: 'flex',
-    flexFlow: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-  drawerHeader: {
-
-  }
-});
+import styles from '../../styles/paletteForm.styles';
 
 class PaletteForm extends Component {
 
@@ -188,7 +126,7 @@ class PaletteForm extends Component {
               paper: classes.drawerPaper,
             }}
           >
-            <div className={classes.drawerHeader}>
+            <div className={classes.drawerHeaders}>
               <IconButton onClick={this.handleDrawerClose}>
                 <ChevronLeftIcon />
               </IconButton>

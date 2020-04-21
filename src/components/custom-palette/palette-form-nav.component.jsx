@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,52 +10,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import MenuIcon from '@material-ui/icons/Menu';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import PaletteSubmitDialog from './palette-sumbit-dialog.component';
 
-const drawerWidth = 400;
-
-const styles = (theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: '64px',
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
-  },
-  hide: {
-    display: 'none',
-  },
-  navBtns: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-
-    '& *': {
-      margin: '.5rem',
-    }
-  }
-});
+import styles from '../../styles/paletteFormNav.styles';
 
 class PaletteFormNav extends Component {
   constructor(props) {
@@ -102,9 +60,9 @@ class PaletteFormNav extends Component {
               color='inherit'
               aria-label='Open drawer'
               onClick={this.props.handleDrawerOpen}
-              className={classNames(classes.menuButton, open && classes.hide)}
+              className={classNames(classes.menuButton, {[classes.hide]: open})}
             >
-              <MenuIcon />
+              <ChevronRightIcon />
             </IconButton>
             <Typography variant='h6' color='inherit' noWrap>New Palette</Typography>
           </Toolbar>
