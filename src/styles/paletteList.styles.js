@@ -1,7 +1,7 @@
 export default {
   root: {
     backgroundImage: 'linear-gradient(to right, #ffa8c4, #92d2e1)',
-    height: '100vh',
+    height: '120vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

@@ -6,6 +6,11 @@ export default {
     padding: '.5rem',
     overflow: 'hidden',
     cursor: 'pointer',
+
+    '&:hover svg': {
+      opacity: '1',
+      transition: 'all .2s',
+    }
   },
   clrs: {
     backgroundColor: '#dae1e4',
@@ -39,4 +44,19 @@ export default {
     marginBottom: '-3.5px',
     overflow: 'hidden',
   },
+  deleteIcon: {
+    opacity: '0',
+    position: 'absolute',
+    top: '0px',
+    right: '0px',
+    padding: '1.5rem',
+    backgroundColor: 'orangered',
+    zIndex: '99',
+    borderRadius: '4px',
+
+    '&:hover': {
+      color: 'white',
+      transition: 'all .2s',
+    } 
+  }
 };
