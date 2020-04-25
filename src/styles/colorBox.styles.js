@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import mqs from './_media-queries.constants';
 
 export default {
   colorBox: {
@@ -13,6 +14,18 @@ export default {
     '&:hover button': {
       opacity: '1',
       transition: 'all .2s',
+    },
+    [mqs.down('lg')]: {
+      width: '25%',
+      height: (props) => (props.showingFullPalette ? '20%' : '50%'),
+    },
+    [mqs.down('md')]: {
+      width: '50%',
+      height: (props) => (props.showingFullPalette ? '10%' : '50%'),
+    },
+    [mqs.down('xs')]: {
+      width: '100%',
+      height: (props) => (props.showingFullPalette ? '5%' : '10%'),
     },
   },
   colorContent: {

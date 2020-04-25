@@ -4,7 +4,6 @@ import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
 
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -61,7 +60,6 @@ class PaletteSubmitDialog extends Component {
   }
 
   render() {
-    const { handleSubmit, formShowing } = this.props;
     const { newPaletteName, stage, currEmoji } = this.state;
 
     return (

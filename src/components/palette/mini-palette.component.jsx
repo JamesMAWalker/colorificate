@@ -4,13 +4,8 @@ import { withStyles } from '@material-ui/styles';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 
 import styles from '../../styles/miniPalette.styles';
-import { render } from '@testing-library/react';
 
 class MiniPalette extends Component {
-  constructor(props) {
-    super(props);
-    
-  }
 
   handleDelete = (e) => {
     e.stopPropagation();
@@ -19,7 +14,7 @@ class MiniPalette extends Component {
   }
   
   render() {
-    const { paletteName, emoji, colors, handleClick, id } = this.props;
+    const { paletteName, emoji, colors, handleClick } = this.props;
     const { root, clrs, ttl, emj, palClr, deleteIcon } = this.props.classes;
 
     let miniClrs = colors.map(c => (
