@@ -7,7 +7,7 @@ const DraggableList = SortableContainer(({colors, removeClr}) => {
   return (
     <div style={{ height: '100%' }} >
       {colors.map((c, i) => (
-        <DraggableBox index={i} removeClr={() => removeClr(c.name)} name={c.name} clr={c.color} />
+        <DraggableBox distance={5} index={i} removeClr={() => removeClr(c.name)} name={c.name} clr={c.color} />
       ))}
     </div>
   );
