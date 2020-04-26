@@ -1,4 +1,5 @@
 import { DRAWER_WIDTH } from '../_constants';
+import mqs from './_media-queries.constants';
 
 const drawerWidth = DRAWER_WIDTH;
 

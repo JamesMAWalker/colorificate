@@ -1,15 +1,38 @@
+import mqs from './_media-queries.constants';
+import bgImg from './images/blue-maze.svg';
+
 export default {
+  '@global': {
+    '.fade-exit': {
+      opacity: '1'
+    },
+    '.fade-exit-active': {
+      opacity: '0',
+      transition: 'opacity .5s ease-out'
+    }
+  },
   root: {
-    backgroundImage: 'linear-gradient(to right, #ffa8c4, #92d2e1)',
-    height: '120vh',
+    backgroundImage: `url(${bgImg})`,
+    height: '100vh',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
+    overflow: 'scroll',
   },
   ctnr: {
     width: '55%',
     height: '100%',
-    alignSelf: 'center',
+    // paddingBottom: '5rem',
+    // alignSelf: 'center',
+    [mqs.down('lg')]: {
+      width: '75%',
+    },
+    [mqs.down('md')]: {
+      width: '85%',
+    },
+    [mqs.down('xs')]: {
+      width: '65%',
+    },
   },
   nav: {
     display: 'flex',
@@ -48,7 +71,16 @@ export default {
   pals: {
     boxSizing: 'border-box',
     display: 'grid',
+    // height: '100%',
     gridTemplateColumns: 'repeat(3, 30%)',
     gridGap: '5%',
+    // paddingBottom: '5vh',
+    [mqs.down('sm')]: {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
+    [mqs.down('xs')]: {
+      gridTemplateColumns: '1fr',
+      gridGap: '2rem',
+    },
   },
 };

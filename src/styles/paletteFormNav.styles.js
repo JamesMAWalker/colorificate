@@ -1,4 +1,5 @@
 import { DRAWER_WIDTH } from '../_constants';
+import mqs from './_media-queries.constants';
 
 const drawerWidth = DRAWER_WIDTH;
 
@@ -7,7 +8,7 @@ const styles = (theme) => ({
     display: 'flex',
   },
   hide: {
-    display: 'none',
+    display: 'none',  
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -39,6 +40,9 @@ const styles = (theme) => ({
 
     '& *': {
       margin: '.5rem',
+      [mqs.down('xs')]: {
+        margin: '0',
+      },
     },
   },
 });

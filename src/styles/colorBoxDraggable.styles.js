@@ -1,3 +1,5 @@
+import mqs from './_media-queries.constants';
+
 const styles = {
   DragBox: {
     height: '25%',
@@ -11,6 +13,18 @@ const styles = {
       transform: 'scale(1.5)',
       transition: 'all .2s ease-in-out',
       color: 'white',
+    },
+    [mqs.down('lg')]: {
+      width: '25%',
+      height: '20%',
+    },
+    [mqs.down('md')]: {
+      width: '50%',
+      height: '10%',
+    },
+    [mqs.down('sm')]: {
+      width: '100%',
+      height: '5%',
     },
   },
   DragBoxContent: {

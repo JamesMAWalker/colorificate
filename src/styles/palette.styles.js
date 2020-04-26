@@ -1,3 +1,5 @@
+import mqs from './_media-queries.constants';
+
 export default {
   Palette: {
     height: '100vh',
@@ -27,6 +29,18 @@ export default {
 
     '& a': {
       opacity: '1',
+    },
+    [mqs.down('lg')]: {
+      width: '75%',
+      height: '33.3333%',
+    },
+    [mqs.down('md')]: {
+      width: '50%',
+      height: '20%',
+    },
+    [mqs.down('xs')]: {
+      width: '100%',
+      height: '10%',
     },
   },
   boxButton: {

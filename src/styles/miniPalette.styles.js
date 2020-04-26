@@ -1,11 +1,13 @@
 export default {
   root: {
     position: 'relative',
+    height: '100%',
+    padding: '.5rem',
     backgroundColor: '#fff',
     borderRadius: '5px',
-    padding: '.5rem',
-    overflow: 'hidden',
     cursor: 'pointer',
+    overflow: 'hidden',
+    // marginBottom: '2rem',
 
     '&:hover svg': {
       opacity: '1',

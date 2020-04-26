@@ -1,3 +1,5 @@
+import mqs from './_media-queries.constants';
+
 export default {
   NavBar: {
     display: 'flex',
@@ -9,6 +11,9 @@ export default {
   logo: {
     padding: '2rem 4rem',
     borderRight: '1px solid rgb(28, 161, 223)',
+    [mqs.down('xs')]: {
+      display: props => props.showingFullPalette
+    }
   },
   logoText: {
     textTransform: 'uppercase',

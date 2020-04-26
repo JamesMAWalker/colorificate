@@ -17,11 +17,11 @@ export default {
     },
     [mqs.down('lg')]: {
       width: '25%',
-      height: (props) => (props.showingFullPalette ? '20%' : '50%'),
+      height: (props) => (props.showingFullPalette ? '20%' : '33.333%'),
     },
     [mqs.down('md')]: {
       width: '50%',
-      height: (props) => (props.showingFullPalette ? '10%' : '50%'),
+      height: (props) => (props.showingFullPalette ? '10%' : '20%'),
     },
     [mqs.down('xs')]: {
       width: '100%',
