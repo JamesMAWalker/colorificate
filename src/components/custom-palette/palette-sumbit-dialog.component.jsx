@@ -56,7 +56,8 @@ class PaletteSubmitDialog extends Component {
       emoji: this.state.currEmoji
     }
 
-    this.props.handleSubmit(newPalette)
+    this.props.handleSubmit(newPalette);
+    this.setState({ stage: '' });
   }
 
   render() {

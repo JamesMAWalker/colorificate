@@ -1,7 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { SortableElement } from 'react-sortable-hoc';
-import chroma from 'chroma-js';
 
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 

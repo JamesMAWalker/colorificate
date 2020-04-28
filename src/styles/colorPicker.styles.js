@@ -1,7 +1,3 @@
-import { DRAWER_WIDTH } from '../_constants';
-
-const drawerWidth = DRAWER_WIDTH;
-
 const styles = {
   ColorPicker: {
     width: '85%',

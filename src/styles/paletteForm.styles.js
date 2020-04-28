@@ -1,5 +1,4 @@
 import { DRAWER_WIDTH } from '../_constants';
-import mqs from './_media-queries.constants';
 
 const drawerWidth = DRAWER_WIDTH;
 
@@ -31,7 +30,6 @@ const styles = (theme) => ({
   content: {
     flexGrow: 1,
     height: 'calc(100vh - 64px)',
-    padding: theme.spacing.unit * 3,
     padding: 0,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,

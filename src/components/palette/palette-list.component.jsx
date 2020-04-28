@@ -47,7 +47,7 @@ class PaletteList extends Component {
 
   render() {
     const { palettes, classes } = this.props;
-    const { root, ctnr, nav, pals, footer } = classes;
+    const { root, ctnr, nav, pals } = classes;
 
     let listOfPalettes = palettes.map((p) => (
       <CSSTransition key={p.id} classNames='fade' timeout={500}>

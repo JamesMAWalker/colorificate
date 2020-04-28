@@ -70,7 +70,7 @@ class PaletteForm extends Component {
   }
 
   addRandClr = () => {
-    const { palettes, colorLimit } = this.props;
+    const { palettes } = this.props;
     const { colors } = this.state;
 
     const allClrs = palettes.map(p => p.colors).flat()
